@@ -5,8 +5,8 @@ export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
-      clientId: 'cc2085987fa8d870af98',
-      clientSecret: 'da6a144af253445069b19995cbee217a4ae3e805'
+      clientId: procces.env.GitHUB_ID,
+      clientSecret: procces.env.GitHUB_ID_SECRET
     }),
     // ...add more providers here
   ],
