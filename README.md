@@ -1,2 +1,2 @@
-# next-auth-git
+# Next Auth whith Git Session
  authentication with Next using GitHub
