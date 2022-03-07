@@ -1,25 +1,39 @@
-import {getSession} from 'next-auth/react';
+import { getSession, signOut } from "next-auth/react";
 
-function HomePage({session}) {
-  const {user} = session;
-  
-  return(
-    <div>
-      <h1>{user.name}</h1>
-      <p>{user.email}</p>
-      <img src={user.image} alt="" />
-    </div>
-  )
+function HomePage({ session }) {
+  if (session) {
+    return (
+      <div>
+        <div>
+          <p>{session.user.email}</p>
+          <p>{session.user.name}</p>
+          <img src={session.user.image} alt="" />
+        </div>
+        <div>
+          <button onClick={() => signOut()}>Sign out</button>
+        </div>
+      </div>
+    );
+  } else {
+    return <div>agregar Skeleton</div>;
+  }
 }
 
-export const getServerSideProps = async (context)=>{
+export const getServerSideProps = async (context) => {
   const session = await getSession(context);
-  return{
-    props:{
-      session:session,
+  if (!session)
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+
+  return {
+    props: {
+      session,
     },
   };
-}
+};
 
-
-export default HomePage
+export default HomePage;
