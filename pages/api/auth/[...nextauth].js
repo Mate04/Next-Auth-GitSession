@@ -10,8 +10,8 @@ export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
+      clientId: 'cc2085987fa8d870af98',
+      clientSecret: 'da6a144af253445069b19995cbee217a4ae3e805'
     }),
     GoogleProvider({
       clientId:'',
